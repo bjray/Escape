@@ -27,23 +27,25 @@ extension SKNode {
 
 class GameViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
-            // Configure the view.
-            let skView = self.view as! SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
-            
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
-            
-            /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
-            
-            skView.presentScene(scene)
-        }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        // create our scene
+        let scene = GameScene()
+        
+        //configure view
+        let skView = self.view as! SKView
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        skView.ignoresSiblingOrder = true
+        scene.scaleMode = .AspectFill
+        
+        //size our view to fit the scene exactly...
+        scene.size = view.bounds.size
+        
+        //show the new scene
+        skView.presentScene(scene)
     }
 
     override func shouldAutorotate() -> Bool {
@@ -51,11 +53,7 @@ class GameViewController: UIViewController {
     }
 
     override func supportedInterfaceOrientations() -> Int {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return Int(UIInterfaceOrientationMask.AllButUpsideDown.rawValue)
-        } else {
-            return Int(UIInterfaceOrientationMask.All.rawValue)
-        }
+        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
     }
 
     override func didReceiveMemoryWarning() {
