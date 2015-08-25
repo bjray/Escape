@@ -22,6 +22,17 @@ class Player: SKSpriteNode, GameSprite {
         self.size = size
         self.position = position
         self.runAction(flyAnimation, withKey: "flapAnimation")
+        
+        // create phyics body based on one of the frames
+        let textureBody = textureAtlas.textureNamed("pierre-flying-3.png")
+        self.physicsBody = SKPhysicsBody(texture: textureBody, size: size)
+        
+        //quickly lose momentum with high linear dampening
+        self.physicsBody?.linearDamping = 0.9
+        self.physicsBody?.mass = 30
+        
+        //prevent from rotating
+        self.physicsBody?.allowsRotation = false
     }
     
     func createAnimations() {
@@ -48,6 +59,10 @@ class Player: SKSpriteNode, GameSprite {
         let soarAction = SKAction.animateWithTextures(soarFrames, timePerFrame: 1)
         
         soarAnimation = SKAction.group([SKAction.repeatActionForever(soarAction), rotateDownAction])
+        
+    }
+    
+    func update() {
         
     }
     
