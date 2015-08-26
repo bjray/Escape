@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		B694F1C81B8D6E610073450B /* goods.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B694F1C71B8D6E610073450B /* goods.atlas */; };
 		B694F1CA1B8D6E8C0073450B /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694F1C91B8D6E8C0073450B /* Star.swift */; };
+		B694F1CC1B8D71ED0073450B /* enemies.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B694F1CB1B8D71ED0073450B /* enemies.atlas */; };
+		B694F1CE1B8D725E0073450B /* MadFly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694F1CD1B8D725E0073450B /* MadFly.swift */; };
+		B694F1D01B8D738F0073450B /* Bat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694F1CF1B8D738F0073450B /* Bat.swift */; };
 		F24C24911B87F03200994135 /* bee.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F24C24901B87F03200994135 /* bee.atlas */; };
 		F24C24931B87F67000994135 /* GameSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24C24921B87F67000994135 /* GameSprite.swift */; };
 		F24C24951B87F71900994135 /* Bee.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24C24941B87F71900994135 /* Bee.swift */; };
@@ -38,6 +41,9 @@
 /* Begin PBXFileReference section */
 		B694F1C71B8D6E610073450B /* goods.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = goods.atlas; sourceTree = "<group>"; };
 		B694F1C91B8D6E8C0073450B /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
+		B694F1CB1B8D71ED0073450B /* enemies.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = enemies.atlas; sourceTree = "<group>"; };
+		B694F1CD1B8D725E0073450B /* MadFly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MadFly.swift; sourceTree = "<group>"; };
+		B694F1CF1B8D738F0073450B /* Bat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bat.swift; sourceTree = "<group>"; };
 		F24C24901B87F03200994135 /* bee.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bee.atlas; sourceTree = "<group>"; };
 		F24C24921B87F67000994135 /* GameSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSprite.swift; sourceTree = "<group>"; };
 		F24C24941B87F71900994135 /* Bee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bee.swift; sourceTree = "<group>"; };
@@ -79,6 +85,7 @@
 		F24C248F1B87D42400994135 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				B694F1CB1B8D71ED0073450B /* enemies.atlas */,
 				B694F1C71B8D6E610073450B /* goods.atlas */,
 				F24C249B1B87FE0B00994135 /* pierre.atlas */,
 				F24C24971B87FA0D00994135 /* ground.atlas */,
@@ -103,6 +110,8 @@
 				F24C24991B87FA5C00994135 /* Ground.swift */,
 				F24C249E1B87FE3600994135 /* Player.swift */,
 				B694F1C91B8D6E8C0073450B /* Star.swift */,
+				B694F1CD1B8D725E0073450B /* MadFly.swift */,
+				B694F1CF1B8D738F0073450B /* Bat.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -252,6 +261,7 @@
 				F2F5C76B1B8624490010FA65 /* Main.storyboard in Resources */,
 				F24C249C1B87FE0B00994135 /* pierre.atlas in Resources */,
 				F24C24981B87FA0D00994135 /* ground.atlas in Resources */,
+				B694F1CC1B8D71ED0073450B /* enemies.atlas in Resources */,
 				B694F1C81B8D6E610073450B /* goods.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,8 +285,10 @@
 				F24C24931B87F67000994135 /* GameSprite.swift in Sources */,
 				F2F5C7661B8624490010FA65 /* GameScene.swift in Sources */,
 				F24C249F1B87FE3600994135 /* Player.swift in Sources */,
+				B694F1D01B8D738F0073450B /* Bat.swift in Sources */,
 				F2F5C7681B8624490010FA65 /* GameViewController.swift in Sources */,
 				F2F5C7621B8624490010FA65 /* AppDelegate.swift in Sources */,
+				B694F1CE1B8D725E0073450B /* MadFly.swift in Sources */,
 				B694F1CA1B8D6E8C0073450B /* Star.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
