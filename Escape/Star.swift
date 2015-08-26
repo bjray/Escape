@@ -14,7 +14,7 @@ class Star:SKSpriteNode, GameSprite {
     
     func spawn(parentNode: SKNode, position: CGPoint, size: CGSize = CGSize(width: 40, height: 38)) {
         parentNode.addChild(self)
-        createAmnimations()
+        createAnimations()
         self.size = size
         self.position = position
         self.physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
@@ -29,7 +29,7 @@ class Star:SKSpriteNode, GameSprite {
         //place holder
     }
     
-    func createAmnimations() {
+    func createAnimations() {
         // Scale star smaller and fade slightly...
         let pulseOutGroup = SKAction.group([
             SKAction.fadeAlphaTo(0.85, duration: 0.8),
@@ -49,6 +49,6 @@ class Star:SKSpriteNode, GameSprite {
         let pulseSequence = SKAction.sequence([pulseOutGroup, pulseInGroup])
         
         // loop pulsing animation
-        pulseAnimation = SKAction.repeatActionForever(pulseAnimation)
+        pulseAnimation = SKAction.repeatActionForever(pulseSequence)
     }
 }

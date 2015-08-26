@@ -15,7 +15,7 @@ class MadFly:SKSpriteNode, GameSprite {
     func spawn(parentNode: SKNode, position: CGPoint, size: CGSize = CGSize(width: 61, height: 29)) {
         parentNode.addChild(self)
 
-        createAmnimations()
+        createAnimations()
         
         self.size = size
         self.position = position
@@ -31,7 +31,7 @@ class MadFly:SKSpriteNode, GameSprite {
         // not implemented
     }
     
-    func createAmnimations() {
+    func createAnimations() {
         let flyFrames:[SKTexture] = [textureAtlas.textureNamed("mad-fly-1.png"), textureAtlas.textureNamed("mad-fly-2.png")]
         let flyAction = SKAction.animateWithTextures(flyFrames, timePerFrame: 0.14)
         flyAnimation = SKAction.repeatActionForever(flyAction)

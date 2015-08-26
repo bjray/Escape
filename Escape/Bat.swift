@@ -15,7 +15,7 @@ class Bat:SKSpriteNode, GameSprite {
     func spawn(parentNode: SKNode, position: CGPoint, size: CGSize = CGSize(width: 44, height: 24)) {
         parentNode.addChild(self)
         
-        createAmnimations()
+        createAnimations()
         
         self.size = size
         self.position = position
@@ -31,7 +31,7 @@ class Bat:SKSpriteNode, GameSprite {
         // not implemented
     }
     
-    func createAmnimations() {
+    func createAnimations() {
         let flyFrames:[SKTexture] = [
             textureAtlas.textureNamed("bat-fly-1.png"),
             textureAtlas.textureNamed("bat-fly-2.png"),

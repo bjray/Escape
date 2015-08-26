@@ -12,6 +12,9 @@
 		B694F1CC1B8D71ED0073450B /* enemies.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B694F1CB1B8D71ED0073450B /* enemies.atlas */; };
 		B694F1CE1B8D725E0073450B /* MadFly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694F1CD1B8D725E0073450B /* MadFly.swift */; };
 		B694F1D01B8D738F0073450B /* Bat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694F1CF1B8D738F0073450B /* Bat.swift */; };
+		B694F1D21B8D744B0073450B /* Ghost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694F1D11B8D744B0073450B /* Ghost.swift */; };
+		B694F1D41B8D76EA0073450B /* Blade.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694F1D31B8D76EA0073450B /* Blade.swift */; };
+		B694F1D61B8D787A0073450B /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694F1D51B8D787A0073450B /* Coin.swift */; };
 		F24C24911B87F03200994135 /* bee.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F24C24901B87F03200994135 /* bee.atlas */; };
 		F24C24931B87F67000994135 /* GameSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24C24921B87F67000994135 /* GameSprite.swift */; };
 		F24C24951B87F71900994135 /* Bee.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24C24941B87F71900994135 /* Bee.swift */; };
@@ -44,6 +47,9 @@
 		B694F1CB1B8D71ED0073450B /* enemies.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = enemies.atlas; sourceTree = "<group>"; };
 		B694F1CD1B8D725E0073450B /* MadFly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MadFly.swift; sourceTree = "<group>"; };
 		B694F1CF1B8D738F0073450B /* Bat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bat.swift; sourceTree = "<group>"; };
+		B694F1D11B8D744B0073450B /* Ghost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ghost.swift; sourceTree = "<group>"; };
+		B694F1D31B8D76EA0073450B /* Blade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blade.swift; sourceTree = "<group>"; };
+		B694F1D51B8D787A0073450B /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		F24C24901B87F03200994135 /* bee.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bee.atlas; sourceTree = "<group>"; };
 		F24C24921B87F67000994135 /* GameSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSprite.swift; sourceTree = "<group>"; };
 		F24C24941B87F71900994135 /* Bee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bee.swift; sourceTree = "<group>"; };
@@ -112,6 +118,9 @@
 				B694F1C91B8D6E8C0073450B /* Star.swift */,
 				B694F1CD1B8D725E0073450B /* MadFly.swift */,
 				B694F1CF1B8D738F0073450B /* Bat.swift */,
+				B694F1D11B8D744B0073450B /* Ghost.swift */,
+				B694F1D31B8D76EA0073450B /* Blade.swift */,
+				B694F1D51B8D787A0073450B /* Coin.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -282,10 +291,13 @@
 			files = (
 				F24C249A1B87FA5C00994135 /* Ground.swift in Sources */,
 				F24C24951B87F71900994135 /* Bee.swift in Sources */,
+				B694F1D41B8D76EA0073450B /* Blade.swift in Sources */,
 				F24C24931B87F67000994135 /* GameSprite.swift in Sources */,
 				F2F5C7661B8624490010FA65 /* GameScene.swift in Sources */,
+				B694F1D21B8D744B0073450B /* Ghost.swift in Sources */,
 				F24C249F1B87FE3600994135 /* Player.swift in Sources */,
 				B694F1D01B8D738F0073450B /* Bat.swift in Sources */,
+				B694F1D61B8D787A0073450B /* Coin.swift in Sources */,
 				F2F5C7681B8624490010FA65 /* GameViewController.swift in Sources */,
 				F2F5C7621B8624490010FA65 /* AppDelegate.swift in Sources */,
 				B694F1CE1B8D725E0073450B /* MadFly.swift in Sources */,

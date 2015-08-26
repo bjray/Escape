@@ -21,14 +21,44 @@ class GameScene: SKScene {
         self.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 0.95, alpha: 1.0)
         self.addChild(world)
         
-        
         let bee2 = Bee()
         let bee3 = Bee()
         let bee4 = Bee()
         
+        //spawn bees...
         bee2.spawn(world, position: CGPoint(x: 325, y: 325))
         bee3.spawn(world, position: CGPoint(x: 200, y: 325))
         bee4.spawn(world, position: CGPoint(x: 50, y: 200))
+        
+        //span a bat
+        let bat = Bat()
+        bat.spawn(world, position: CGPoint(x: 400, y: 200))
+        
+        //span a blade
+        let blade = Blade()
+        blade.spawn(world, position: CGPoint(x: 300, y: 76))
+        
+        //span a mad fly
+        let madFly = MadFly()
+        madFly.spawn(world, position: CGPoint(x: 50, y: 50))
+        
+        //span a bronze coin
+        let bronzeCoin = Coin()
+        bronzeCoin.spawn(world, position: CGPoint(x: 490, y: 250))
+        
+        //span a gold coin
+        let goldCoin = Coin()
+        goldCoin.spawn(world, position: CGPoint(x: 460, y: 250))
+        goldCoin.turnToGold()
+        
+        //span a ghost
+        let ghost = Ghost()
+        ghost.spawn(world, position: CGPoint(x: 50, y: 300))
+        
+//        //span a powerup star
+        let star = Star()
+        star.spawn(world, position: CGPoint(x: 250, y: 250))
+        
         
         let groundPosition = CGPoint(x: -self.size.width, y: 30)
         let groundSize = CGSize(width: self.size.width * 3, height: 0)
