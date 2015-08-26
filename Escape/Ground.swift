@@ -10,6 +10,8 @@ import SpriteKit
 class Ground: SKSpriteNode, GameSprite {
     var textureAtlas:SKTextureAtlas = SKTextureAtlas(named: "ground.atlas")
     var groundTexture:SKTexture?
+    var jumpWidth = CGFloat()
+    var jumpCount = CGFloat(1)
     
     func spawn(parentNode: SKNode, position: CGPoint, size: CGSize) {
         parentNode.addChild(self)
@@ -42,7 +44,21 @@ class Ground: SKSpriteNode, GameSprite {
                 tileNode.anchorPoint = CGPoint(x: 0, y: 1)
                 self.addChild(tileNode)
                 tileCount++
+                
+                //find the width of 1/3 of the floor tiles
+                jumpWidth = tileSize.width * floor(tileCount/3)
             }
+        }
+    }
+    
+    func checkForReposition(playerProgress:CGFloat) {
+        //jump the ground forward every time the player has moved this far:
+        let groundJumpPosition = jumpWidth * jumpCount
+        
+        if playerProgress >= groundJumpPosition {
+            // the player has moved past the jump position
+            self.position.x += jumpWidth
+            jumpCount++
         }
     }
     
