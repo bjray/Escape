@@ -33,12 +33,34 @@ class GameScene: SKScene {
         player.spawn(world, position: CGPoint(x: 150, y: 250))
         
         
+        // Adjust the gravity - he must be on Mars
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: -5)
     }
     
     override func didSimulatePhysics() {
         let worldXPos = -(player.position.x * world.xScale - (self.size.width / 2))
         let worldYPos = -(player.position.y * world.yScale - (self.size.height / 2))
         world.position = CGPoint(x: worldXPos, y: worldYPos)
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        for touch in (touches as! Set<UITouch>) {
+            let location = touch.locationInNode(self)
+            let nodeTouched = nodeAtPoint(location)
+            if let gameSprint = nodeTouched as? GameSprite {
+                gameSprint.onTap()
+            }
+        }
+        
+        player.startFlapping()
+    }
+    
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        player.stopFlapping()
+    }
+    
+    override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
+        player.stopFlapping()
     }
     
     override func update(currentTime: NSTimeInterval) {

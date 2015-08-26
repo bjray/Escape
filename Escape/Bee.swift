@@ -36,6 +36,7 @@ class Bee:SKSpriteNode, GameSprite {
     }
     
     func onTap() {
-        // not yet implemented...
+        //not yet implemented
+        
     }
 }
