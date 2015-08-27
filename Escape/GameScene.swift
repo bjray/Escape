@@ -13,52 +13,19 @@ class GameScene: SKScene {
     let ground = Ground()
     let player = Player()
     let initialPlayerPosition = CGPoint(x: 150, y: 250)
+    let encounterManager = EncounterManager()
     var screenCenterY = CGFloat()
     var playerProgress = CGFloat()
+    var nextEncounterSpawnPosition = CGFloat(150)
     
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 0.95, alpha: 1.0)
         self.addChild(world)
         
-        let bee2 = Bee()
-        let bee3 = Bee()
-        let bee4 = Bee()
+        screenCenterY = self.size.height / 2
         
-        //spawn bees...
-        bee2.spawn(world, position: CGPoint(x: 325, y: 325))
-        bee3.spawn(world, position: CGPoint(x: 200, y: 325))
-        bee4.spawn(world, position: CGPoint(x: 50, y: 200))
-        
-        //span a bat
-        let bat = Bat()
-        bat.spawn(world, position: CGPoint(x: 400, y: 200))
-        
-        //span a blade
-        let blade = Blade()
-        blade.spawn(world, position: CGPoint(x: 300, y: 76))
-        
-        //span a mad fly
-        let madFly = MadFly()
-        madFly.spawn(world, position: CGPoint(x: 50, y: 50))
-        
-        //span a bronze coin
-        let bronzeCoin = Coin()
-        bronzeCoin.spawn(world, position: CGPoint(x: 490, y: 250))
-        
-        //span a gold coin
-        let goldCoin = Coin()
-        goldCoin.spawn(world, position: CGPoint(x: 460, y: 250))
-        goldCoin.turnToGold()
-        
-        //span a ghost
-        let ghost = Ghost()
-        ghost.spawn(world, position: CGPoint(x: 50, y: 300))
-        
-//        //span a powerup star
-        let star = Star()
-        star.spawn(world, position: CGPoint(x: 250, y: 250))
-        
+        encounterManager.addEncountersToWorld(self.world)
         
         let groundPosition = CGPoint(x: -self.size.width, y: 30)
         let groundSize = CGSize(width: self.size.width * 3, height: 0)
@@ -70,7 +37,8 @@ class GameScene: SKScene {
         // Adjust the gravity - he must be on Mars
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -5)
         
-        screenCenterY = self.size.height / 2
+//        //given encounters are created way off screen, now move first in position
+//        encounterManager.encounters[0].position = CGPoint(x: 300, y: 0)
     }
     
     override func didSimulatePhysics() {
@@ -88,7 +56,7 @@ class GameScene: SKScene {
             worldYPos = -(player.position.y * world.yScale - (self.size.height / 2))
         }
         
-        let worldXPos = -(player.position.x * world.xScale - (self.size.width / 2))
+        let worldXPos = -(player.position.x * world.xScale - (self.size.width / 3))
         
         world.position = CGPoint(x: worldXPos, y: worldYPos)
         
@@ -97,6 +65,12 @@ class GameScene: SKScene {
         
         // Check to see if ground should jump forward
         ground.checkForReposition(playerProgress)
+        
+        // Check to see if we should set a new encounter
+        if player.position.x > nextEncounterSpawnPosition {
+            encounterManager.placeNextEncounter(nextEncounterSpawnPosition)
+            nextEncounterSpawnPosition += 1400
+        }
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {

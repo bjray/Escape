@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B654BDEE1B8E128600F701C7 /* EncounterBats.sks in Resources */ = {isa = PBXBuildFile; fileRef = B654BDED1B8E128600F701C7 /* EncounterBats.sks */; };
+		B654BDF01B8E147700F701C7 /* EncounterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654BDEF1B8E147700F701C7 /* EncounterManager.swift */; };
+		B654BDF21B8E1A9F00F701C7 /* EncounterBees.sks in Resources */ = {isa = PBXBuildFile; fileRef = B654BDF11B8E1A9F00F701C7 /* EncounterBees.sks */; };
+		B654BDF41B8E1AAD00F701C7 /* EncounterCoins.sks in Resources */ = {isa = PBXBuildFile; fileRef = B654BDF31B8E1AAD00F701C7 /* EncounterCoins.sks */; };
 		B694F1C81B8D6E610073450B /* goods.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B694F1C71B8D6E610073450B /* goods.atlas */; };
 		B694F1CA1B8D6E8C0073450B /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694F1C91B8D6E8C0073450B /* Star.swift */; };
 		B694F1CC1B8D71ED0073450B /* enemies.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B694F1CB1B8D71ED0073450B /* enemies.atlas */; };
@@ -42,6 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B654BDED1B8E128600F701C7 /* EncounterBats.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterBats.sks; sourceTree = "<group>"; };
+		B654BDEF1B8E147700F701C7 /* EncounterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterManager.swift; sourceTree = "<group>"; };
+		B654BDF11B8E1A9F00F701C7 /* EncounterBees.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterBees.sks; sourceTree = "<group>"; };
+		B654BDF31B8E1AAD00F701C7 /* EncounterCoins.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterCoins.sks; sourceTree = "<group>"; };
 		B694F1C71B8D6E610073450B /* goods.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = goods.atlas; sourceTree = "<group>"; };
 		B694F1C91B8D6E8C0073450B /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
 		B694F1CB1B8D71ED0073450B /* enemies.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = enemies.atlas; sourceTree = "<group>"; };
@@ -88,6 +96,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B654BDEC1B8E126900F701C7 /* Encounters */ = {
+			isa = PBXGroup;
+			children = (
+				B654BDED1B8E128600F701C7 /* EncounterBats.sks */,
+				B654BDF11B8E1A9F00F701C7 /* EncounterBees.sks */,
+				B654BDF31B8E1AAD00F701C7 /* EncounterCoins.sks */,
+			);
+			name = Encounters;
+			sourceTree = "<group>";
+		};
 		F24C248F1B87D42400994135 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,12 +164,14 @@
 		F2F5C75E1B8624480010FA65 /* Escape */ = {
 			isa = PBXGroup;
 			children = (
+				B654BDEC1B8E126900F701C7 /* Encounters */,
 				F24C249D1B87FE1800994135 /* Models */,
 				F24C24961B87F8FF00994135 /* Protocols */,
 				F24C248F1B87D42400994135 /* Assets */,
 				F2F5C7611B8624490010FA65 /* AppDelegate.swift */,
 				F2F5C7651B8624490010FA65 /* GameScene.swift */,
 				F2F5C7671B8624490010FA65 /* GameViewController.swift */,
+				B654BDEF1B8E147700F701C7 /* EncounterManager.swift */,
 				F2F5C75F1B8624480010FA65 /* Supporting Files */,
 			);
 			path = Escape;
@@ -268,9 +288,12 @@
 				F2F5C7701B8624490010FA65 /* LaunchScreen.xib in Resources */,
 				F2F5C76D1B8624490010FA65 /* Images.xcassets in Resources */,
 				F2F5C76B1B8624490010FA65 /* Main.storyboard in Resources */,
+				B654BDEE1B8E128600F701C7 /* EncounterBats.sks in Resources */,
 				F24C249C1B87FE0B00994135 /* pierre.atlas in Resources */,
 				F24C24981B87FA0D00994135 /* ground.atlas in Resources */,
 				B694F1CC1B8D71ED0073450B /* enemies.atlas in Resources */,
+				B654BDF21B8E1A9F00F701C7 /* EncounterBees.sks in Resources */,
+				B654BDF41B8E1AAD00F701C7 /* EncounterCoins.sks in Resources */,
 				B694F1C81B8D6E610073450B /* goods.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F24C249A1B87FA5C00994135 /* Ground.swift in Sources */,
+				B654BDF01B8E147700F701C7 /* EncounterManager.swift in Sources */,
 				F24C24951B87F71900994135 /* Bee.swift in Sources */,
 				B694F1D41B8D76EA0073450B /* Blade.swift in Sources */,
 				F24C24931B87F67000994135 /* GameSprite.swift in Sources */,
