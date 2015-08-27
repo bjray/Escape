@@ -14,6 +14,7 @@ class Player: SKSpriteNode, GameSprite {
     var flyAnimation = SKAction()
     var soarAnimation = SKAction()
     var flapping = false                        // Flying or not?
+    var xSpeed:CGFloat = 200
     let maxFlappingForce:CGFloat = 57000        // set max upward force
     let maxHeight:CGFloat = 1000                // Slow down when getting too high
     
@@ -82,7 +83,7 @@ class Player: SKSpriteNode, GameSprite {
                 self.physicsBody?.velocity.dy = 300
             }
             
-            self.physicsBody?.velocity.dx = 200
+            self.physicsBody?.velocity.dx = xSpeed
         }
     }
     

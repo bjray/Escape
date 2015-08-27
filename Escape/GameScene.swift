@@ -14,6 +14,7 @@ class GameScene: SKScene {
     let player = Player()
     let initialPlayerPosition = CGPoint(x: 150, y: 250)
     let encounterManager = EncounterManager()
+    let powerUpStar = Star()
     var screenCenterY = CGFloat()
     var playerProgress = CGFloat()
     var nextEncounterSpawnPosition = CGFloat(150)
@@ -30,15 +31,12 @@ class GameScene: SKScene {
         let groundPosition = CGPoint(x: -self.size.width, y: 30)
         let groundSize = CGSize(width: self.size.width * 3, height: 0)
         ground.spawn(world, position: groundPosition, size: groundSize)
-        
         player.spawn(world, position: initialPlayerPosition)
+        powerUpStar.spawn(world, position: CGPoint(x: -2000, y: -2000))
         
         
         // Adjust the gravity - he must be on Mars
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -5)
-        
-//        //given encounters are created way off screen, now move first in position
-//        encounterManager.encounters[0].position = CGPoint(x: 300, y: 0)
     }
     
     override func didSimulatePhysics() {
@@ -70,6 +68,18 @@ class GameScene: SKScene {
         if player.position.x > nextEncounterSpawnPosition {
             encounterManager.placeNextEncounter(nextEncounterSpawnPosition)
             nextEncounterSpawnPosition += 1400
+            
+            // Each encounter has a 10% chance to spawn a star
+            let starRoll = Int(arc4random_uniform(10))
+            if starRoll == 0 {
+                if abs(player.position.x - powerUpStar.position.x) > 1200 {
+                    // Only move the star if it is offscreen
+                    let randomYPos = CGFloat(arc4random_uniform(400))
+                    powerUpStar.position = CGPoint(x: nextEncounterSpawnPosition, y: randomYPos)
+                    powerUpStar.physicsBody?.angularVelocity = 0
+                    powerUpStar.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                }
+            }
         }
     }
     
