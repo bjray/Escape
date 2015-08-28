@@ -21,8 +21,10 @@ class Ghost:SKSpriteNode, GameSprite {
         self.position = position
         self.physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
         self.physicsBody?.affectedByGravity = false
-        self.texture = textureAtlas.textureNamed("ghost-frown.png")
+        self.physicsBody?.categoryBitMask = PhysicsCategory.enemy.rawValue
+        self.physicsBody?.collisionBitMask = ~PhysicsCategory.damagedPenguin.rawValue
         
+        self.texture = textureAtlas.textureNamed("ghost-frown.png")
         self.runAction(fadeAnimation)
         self.alpha = 0.8
     }

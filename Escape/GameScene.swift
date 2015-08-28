@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     let world = SKNode()
     let ground = Ground()
     let player = Player()
@@ -37,6 +37,8 @@ class GameScene: SKScene {
         
         // Adjust the gravity - he must be on Mars
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -5)
+        
+        self.physicsWorld.contactDelegate = self
     }
     
     override func didSimulatePhysics() {
@@ -106,4 +108,45 @@ class GameScene: SKScene {
     override func update(currentTime: NSTimeInterval) {
         player.update()
     }
+    
+    // MARK:
+    // MARK: Contact Delegate Methods
+    func didBeginContact(contact: SKPhysicsContact) {
+        // Contact happens between a penguin and some object, but we dont know which one, so find a penguin
+        let otherBody:SKPhysicsBody
+        
+        //combine 2 penguin masks into 1 using bitwise OR
+        let penguinMask = PhysicsCategory.penguin.rawValue | PhysicsCategory.damagedPenguin.rawValue
+        
+        // use bitwise AND to find penguin - a positive value means first object is a penguin
+        if (contact.bodyA.categoryBitMask & penguinMask) > 0 {
+            otherBody = contact.bodyB
+        } else {
+            otherBody = contact.bodyA
+        }
+        
+        switch otherBody.categoryBitMask {
+        case PhysicsCategory.ground.rawValue:
+            println("hit the ground")
+        case PhysicsCategory.enemy.rawValue:
+            println("take damange")
+        case PhysicsCategory.coin.rawValue:
+            println("collect a coin")
+        case PhysicsCategory.powerup.rawValue:
+            println("start power-up")
+        default:
+            println("contact with no game logic")
+        }
+        
+    }
+    
+}
+
+enum PhysicsCategory:UInt32 {
+    case penguin = 1
+    case damagedPenguin = 2
+    case ground = 4
+    case enemy = 8
+    case coin = 16
+    case powerup = 32
 }

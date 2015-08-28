@@ -25,6 +25,8 @@ class Bee:SKSpriteNode, GameSprite {
         //add a physics body the shape of a circle roughly the same size as the bee
         self.physicsBody = SKPhysicsBody(circleOfRadius: size.width/2)
         self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.categoryBitMask = PhysicsCategory.enemy.rawValue
+        self.physicsBody?.collisionBitMask = ~PhysicsCategory.damagedPenguin.rawValue
     }
     
     func createAnimations() {

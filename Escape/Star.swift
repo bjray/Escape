@@ -23,6 +23,7 @@ class Star:SKSpriteNode, GameSprite {
         //star texture is only 1 frame so set here
         self.texture = textureAtlas.textureNamed("power-up-star.png")
         self.runAction(pulseAnimation)
+        self.physicsBody?.categoryBitMask = PhysicsCategory.powerup.rawValue
     }
     
     func onTap() {

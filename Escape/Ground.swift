@@ -29,6 +29,7 @@ class Ground: SKSpriteNode, GameSprite {
         //draw an edge physics body along the top of the ground node
         let pointTopRight = CGPoint(x: size.width, y: 0)
         self.physicsBody = SKPhysicsBody(edgeFromPoint: CGPointZero, toPoint: pointTopRight)
+        self.physicsBody?.categoryBitMask = PhysicsCategory.ground.rawValue
     }
     
     func createChildren() {

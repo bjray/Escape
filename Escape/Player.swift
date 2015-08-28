@@ -37,6 +37,15 @@ class Player: SKSpriteNode, GameSprite {
         
         //prevent from rotating
         self.physicsBody?.allowsRotation = false
+        
+        self.physicsBody?.categoryBitMask = PhysicsCategory.penguin.rawValue
+        self.physicsBody?.contactTestBitMask =
+            PhysicsCategory.enemy.rawValue |
+            PhysicsCategory.coin.rawValue |
+            PhysicsCategory.ground.rawValue |
+            PhysicsCategory.powerup.rawValue
+        
+        
     }
     
     func createAnimations() {
