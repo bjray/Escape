@@ -88,11 +88,40 @@ class Player: SKSpriteNode, GameSprite {
             
             //use bitwise NOT to remove enemies from collision
             self.physicsBody?.collisionBitMask = ~PhysicsCategory.enemy.rawValue
-            
-            //create an opacity pulse
-            
         }
         
+        //create an opacity pulse
+        let slowFade = SKAction.sequence([
+            SKAction.fadeAlphaTo(0.3, duration: 0.35),
+            SKAction.fadeAlphaTo(0.7, duration: 0.35)
+            ])
+
+        let fastFade = SKAction.sequence([
+            SKAction.fadeAlphaTo(0.3, duration: 0.2),
+            SKAction.fadeAlphaTo(0.7, duration: 0.2)
+            ])
+        let fadeInAndOut = SKAction.sequence([
+            SKAction.repeatAction(slowFade, count: 2),
+            SKAction.repeatAction(fastFade, count: 5),
+            SKAction.fadeAlphaTo(1, duration: 0.15)
+            ])
+        
+        // return penguin back to normal
+        let damageEnd =     SKAction.runBlock {
+            self.physicsBody?.categoryBitMask = PhysicsCategory.penguin.rawValue
+            
+            // collide with everything again...
+            self.physicsBody?.collisionBitMask = 0xFFFFFFFF
+            // turn of newly damaged flag
+            self.damaged = false
+        }
+        
+        // store the whole sequence in damage property
+        self.damageAnimation = SKAction.sequence([
+            damageStart,
+            fadeInAndOut,
+            damageEnd
+            ])
     }
     
     func update() {
@@ -158,7 +187,7 @@ class Player: SKSpriteNode, GameSprite {
     
     func takeDamage() {
         if self.invulnerable || self.damaged { return }
-        
+        self.damaged = true
         self.health--
         
         if self.health == 0 {
