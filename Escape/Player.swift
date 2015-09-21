@@ -220,4 +220,28 @@ class Player: SKSpriteNode, GameSprite {
             self.runAction(self.damageAnimation)
         }
     }
+    
+    func starPower() {
+        // remove any existing star power animation
+        self.removeActionForKey("starPower")
+        
+        // grant forward speed
+        self.forwardVelocity = 400
+        
+        // make player invulnerable
+        self.invulnerable = true
+        
+        // create sequence to scale the player larger for 8 seconds
+        let starSequence = SKAction.sequence([
+            SKAction.scaleTo(1.5, duration: 0.3),
+            SKAction.waitForDuration(8),
+            SKAction.scaleTo(1, duration: 1),
+            SKAction.runBlock({
+                self.forwardVelocity = 200
+                self.invulnerable = false
+            })
+        ])
+        
+        self.runAction(starSequence, withKey: "starPower")
+    }
 }
