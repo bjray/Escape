@@ -56,7 +56,7 @@ class EncounterManager {
                             let coin = Coin()
                             coin.spawn(encounter, position: node.position)
                         default:
-                            println("Name error \(node.name)")
+                            print("Name error \(node.name)")
                         }
                     }
                 }

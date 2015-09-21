@@ -206,7 +206,7 @@ class Player: SKSpriteNode, GameSprite {
         self.flapping = false
         self.forwardVelocity = 0
         
-        println("You done died!")
+        print("You done died!", terminator: "")
     }
     
     func takeDamage() {

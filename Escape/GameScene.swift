@@ -18,6 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var screenCenterY = CGFloat()
     var playerProgress = CGFloat()
     var nextEncounterSpawnPosition = CGFloat(150)
+    var coinsCollected = 0
     
     
     override func didMoveToView(view: SKView) {
@@ -85,8 +86,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        for touch in (touches as! Set<UITouch>) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch in (touches ) {
             let location = touch.locationInNode(self)
             let nodeTouched = nodeAtPoint(location)
             if let gameSprint = nodeTouched as? GameSprite {
@@ -97,11 +98,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.startFlapping()
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         player.stopFlapping()
     }
     
-    override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
+    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
         player.stopFlapping()
     }
     
@@ -127,17 +128,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         switch otherBody.categoryBitMask {
         case PhysicsCategory.ground.rawValue:
-            println("hit the ground")
+            print("hit the ground")
             player.takeDamage()
         case PhysicsCategory.enemy.rawValue:
-            println("take damange")
+            print("take damange")
             player.takeDamage()
         case PhysicsCategory.coin.rawValue:
-            println("collect a coin")
+            
+            if let coin = otherBody.node as? Coin {
+                coin.collect()
+                self.coinsCollected += coin.value
+                print(self.coinsCollected)
+            }
         case PhysicsCategory.powerup.rawValue:
-            println("start power-up")
+            print("start power-up")
         default:
-            println("contact with no game logic")
+            print("contact with no game logic")
         }
         
     }
