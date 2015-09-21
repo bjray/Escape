@@ -47,22 +47,23 @@ class Player: SKSpriteNode, GameSprite {
         self.physicsBody?.categoryBitMask = PhysicsCategory.penguin.rawValue
         self.physicsBody?.contactTestBitMask =
             PhysicsCategory.enemy.rawValue |
-            PhysicsCategory.coin.rawValue |
             PhysicsCategory.ground.rawValue |
-            PhysicsCategory.powerup.rawValue
+            PhysicsCategory.powerup.rawValue |
+            PhysicsCategory.coin.rawValue
         
         
     }
     
     func createAnimations() {
-        let rotateUpAction = SKAction.rotateByAngle(0, duration: 0.475)
+        let rotateUpAction = SKAction.rotateToAngle(0, duration: 0.475)
         rotateUpAction.timingMode = .EaseOut
         
         let rotateDownAction = SKAction.rotateToAngle(-1, duration: 0.8)
         rotateDownAction.timingMode = .EaseIn
         
         //create flying animation...
-        let flyingFrames:[SKTexture] = [textureAtlas.textureNamed("pierre-flying-1.png"),
+        let flyingFrames:[SKTexture] = [
+            textureAtlas.textureNamed("pierre-flying-1.png"),
             textureAtlas.textureNamed("pierre-flying-2.png"),
             textureAtlas.textureNamed("pierre-flying-3.png"),
             textureAtlas.textureNamed("pierre-flying-4.png"),
@@ -78,10 +79,6 @@ class Player: SKSpriteNode, GameSprite {
         let soarAction = SKAction.animateWithTextures(soarFrames, timePerFrame: 1)
         
         soarAnimation = SKAction.group([SKAction.repeatActionForever(soarAction), rotateDownAction])
-
-//            SKAction.runBlock({ () -> Void in
-//                <#code#>
-//            })
 
         let damageStart = SKAction.runBlock{
             self.physicsBody?.categoryBitMask = PhysicsCategory.damagedPenguin.rawValue
@@ -122,6 +119,33 @@ class Player: SKSpriteNode, GameSprite {
             fadeInAndOut,
             damageEnd
             ])
+        
+        let startDie = SKAction.runBlock {
+            // add x-eyes
+            self.texture = self.textureAtlas.textureNamed("pierre-dead.png")
+            
+            // suspend motion
+            self.physicsBody?.affectedByGravity = false
+            
+            // Stop any motion
+            self.physicsBody?.velocity = CGVector(dx: 0, dy:0)
+            
+            // Make penguin pass through everything except ground
+            self.physicsBody?.collisionBitMask = PhysicsCategory.ground.rawValue
+        }
+        
+        let endDie = SKAction.runBlock {
+            // turn gravity back on
+            self.physicsBody?.affectedByGravity = true
+        }
+        
+        self.dieAnimation = SKAction.sequence([
+            startDie,
+            SKAction.scaleTo(1.3, duration: 0.5),
+            SKAction.waitForDuration(0.5),
+            SKAction.rotateToAngle(3, duration: 1.5),
+            SKAction.waitForDuration(0.5),
+            endDie])
     }
     
     func update() {
