@@ -20,6 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var playerProgress = CGFloat()
     var nextEncounterSpawnPosition = CGFloat(150)
     var coinsCollected = 0
+    var backgrounds:[Background] = []
     
     
     override func didMoveToView(view: SKView) {
@@ -43,6 +44,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // position hud above all others
         hud.zPosition = 50
+        
+        // make 4 backgrounds...
+        for i in 0...3 {
+            backgrounds.append(Background())
+        }
+        
+        // Spawn the new backgrounds...
+        backgrounds[0].spawn(world, imageName: "Background-1", zPosition: -5, moveMulti: 0.75)
+        
+        backgrounds[1].spawn(world, imageName: "Background-2", zPosition: -10, moveMulti: 0.5)
+        backgrounds[2].spawn(world, imageName: "Background-3", zPosition: -15, moveMulti: 0.2)
+        backgrounds[3].spawn(world, imageName: "Background-4", zPosition: -20, moveMulti: 0.1)
         
         // Adjust the gravity - he must be on Mars
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -5)
@@ -91,6 +104,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     powerUpStar.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
                 }
             }
+        }
+        
+        // Position backgrounds...
+        for background in self.backgrounds {
+            background.updatePosition(playerProgress)
         }
     }
     
