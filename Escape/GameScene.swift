@@ -15,6 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let initialPlayerPosition = CGPoint(x: 150, y: 250)
     let encounterManager = EncounterManager()
     let powerUpStar = Star()
+    let hud = HUD()
     var screenCenterY = CGFloat()
     var playerProgress = CGFloat()
     var nextEncounterSpawnPosition = CGFloat(150)
@@ -35,6 +36,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.spawn(world, position: initialPlayerPosition)
         powerUpStar.spawn(world, position: CGPoint(x: -2000, y: -2000))
         
+        
+        // Create HUD's child nodes and add to scene
+        hud.createHudNodes(self.size)
+        self.addChild(hud)
+        
+        // position hud above all others
+        hud.zPosition = 50
         
         // Adjust the gravity - he must be on Mars
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -5)
@@ -128,17 +136,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         switch otherBody.categoryBitMask {
         case PhysicsCategory.ground.rawValue:
-            print("hit the ground")
             player.takeDamage()
+            hud.setHealthDisplay(player.health)
         case PhysicsCategory.enemy.rawValue:
-            print("take damange")
             player.takeDamage()
+            hud.setHealthDisplay(player.health)
         case PhysicsCategory.coin.rawValue:
-            
             if let coin = otherBody.node as? Coin {
                 coin.collect()
                 self.coinsCollected += coin.value
-                print(self.coinsCollected)
+                hud.setCoinCountDisplay(self.coinsCollected)
             }
         case PhysicsCategory.powerup.rawValue:
             print("start power-up")

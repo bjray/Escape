@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B63E5E041BB1A9FA00B9AF16 /* hud.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B63E5E031BB1A9FA00B9AF16 /* hud.atlas */; settings = {ASSET_TAGS = (); }; };
+		B63E5E051BB1A9FA00B9AF16 /* hud.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B63E5E031BB1A9FA00B9AF16 /* hud.atlas */; settings = {ASSET_TAGS = (); }; };
+		B63E5E071BB1AA1D00B9AF16 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E5E061BB1AA1D00B9AF16 /* HUD.swift */; settings = {ASSET_TAGS = (); }; };
+		B63E5E081BB1AA1D00B9AF16 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E5E061BB1AA1D00B9AF16 /* HUD.swift */; settings = {ASSET_TAGS = (); }; };
+		B63E5E0A1BB1EBE900B9AF16 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E5E091BB1EBE900B9AF16 /* Background.swift */; settings = {ASSET_TAGS = (); }; };
+		B63E5E0B1BB1EBE900B9AF16 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E5E091BB1EBE900B9AF16 /* Background.swift */; settings = {ASSET_TAGS = (); }; };
 		B654BDEE1B8E128600F701C7 /* EncounterBats.sks in Resources */ = {isa = PBXBuildFile; fileRef = B654BDED1B8E128600F701C7 /* EncounterBats.sks */; };
 		B654BDF01B8E147700F701C7 /* EncounterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654BDEF1B8E147700F701C7 /* EncounterManager.swift */; };
 		B654BDF21B8E1A9F00F701C7 /* EncounterBees.sks in Resources */ = {isa = PBXBuildFile; fileRef = B654BDF11B8E1A9F00F701C7 /* EncounterBees.sks */; };
@@ -46,6 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B63E5E031BB1A9FA00B9AF16 /* hud.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = hud.atlas; sourceTree = "<group>"; };
+		B63E5E061BB1AA1D00B9AF16 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		B63E5E091BB1EBE900B9AF16 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		B654BDED1B8E128600F701C7 /* EncounterBats.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterBats.sks; sourceTree = "<group>"; };
 		B654BDEF1B8E147700F701C7 /* EncounterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncounterManager.swift; sourceTree = "<group>"; };
 		B654BDF11B8E1A9F00F701C7 /* EncounterBees.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterBees.sks; sourceTree = "<group>"; };
@@ -109,6 +118,7 @@
 		F24C248F1B87D42400994135 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				B63E5E031BB1A9FA00B9AF16 /* hud.atlas */,
 				B694F1CB1B8D71ED0073450B /* enemies.atlas */,
 				B694F1C71B8D6E610073450B /* goods.atlas */,
 				F24C249B1B87FE0B00994135 /* pierre.atlas */,
@@ -139,6 +149,8 @@
 				B694F1D11B8D744B0073450B /* Ghost.swift */,
 				B694F1D31B8D76EA0073450B /* Blade.swift */,
 				B694F1D51B8D787A0073450B /* Coin.swift */,
+				B63E5E061BB1AA1D00B9AF16 /* HUD.swift */,
+				B63E5E091BB1EBE900B9AF16 /* Background.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -286,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F24C24911B87F03200994135 /* bee.atlas in Resources */,
+				B63E5E041BB1A9FA00B9AF16 /* hud.atlas in Resources */,
 				F2F5C7701B8624490010FA65 /* LaunchScreen.xib in Resources */,
 				F2F5C76D1B8624490010FA65 /* Images.xcassets in Resources */,
 				F2F5C76B1B8624490010FA65 /* Main.storyboard in Resources */,
@@ -303,6 +316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B63E5E051BB1A9FA00B9AF16 /* hud.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,10 +333,12 @@
 				B694F1D41B8D76EA0073450B /* Blade.swift in Sources */,
 				F24C24931B87F67000994135 /* GameSprite.swift in Sources */,
 				F2F5C7661B8624490010FA65 /* GameScene.swift in Sources */,
+				B63E5E071BB1AA1D00B9AF16 /* HUD.swift in Sources */,
 				B694F1D21B8D744B0073450B /* Ghost.swift in Sources */,
 				F24C249F1B87FE3600994135 /* Player.swift in Sources */,
 				B694F1D01B8D738F0073450B /* Bat.swift in Sources */,
 				B694F1D61B8D787A0073450B /* Coin.swift in Sources */,
+				B63E5E0A1BB1EBE900B9AF16 /* Background.swift in Sources */,
 				F2F5C7681B8624490010FA65 /* GameViewController.swift in Sources */,
 				F2F5C7621B8624490010FA65 /* AppDelegate.swift in Sources */,
 				B694F1CE1B8D725E0073450B /* MadFly.swift in Sources */,
@@ -335,6 +351,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2F5C77C1B8624490010FA65 /* EscapeTests.swift in Sources */,
+				B63E5E081BB1AA1D00B9AF16 /* HUD.swift in Sources */,
+				B63E5E0B1BB1EBE900B9AF16 /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
